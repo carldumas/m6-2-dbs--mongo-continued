@@ -7,7 +7,7 @@
 ---
 
 - A MongoDB _signature_ is the use of the underscore in for the `id`.
-- If you don't provide and `_id`, Mongo will generate one for you.
+- If you don't provide an `_id`, Mongo will generate one for you.
 
 ---
 
@@ -21,7 +21,7 @@ If you let Mongo assign its own `_id`, know that it will generate the following:
 
 ```js
 // in Node
-_id: "507f1f77bcf86cd799439011";
+_id: '507f1f77bcf86cd799439011';
 ```
 
 The 12-byte ObjectId value consists of
@@ -35,7 +35,7 @@ The 12-byte ObjectId value consists of
 ### `ObjectId().getTimestamp()`
 
 ```js
-ObjectId("5e98febee9b6840a209fe251").getTimestamp();
+ObjectId('5e98febee9b6840a209fe251').getTimestamp();
 
 // 2020-04-17T00:56:30.000Z
 ```
