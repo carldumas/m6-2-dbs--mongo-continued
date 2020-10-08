@@ -50,7 +50,7 @@ const PurchaseModal = () => {
     <Modal
       isOpen={!!selectedSeatId}
       onClose={cancelBookingProcess}
-      aria-label='Ticket purchasing flow'
+      aria-label="Ticket purchasing flow"
       style={{ padding: '2rem 2rem 0' }}
     >
       <Title>Purchase ticket</Title>
@@ -58,7 +58,7 @@ const PurchaseModal = () => {
         You're purchasing <strong>1</strong> ticket for the price of ${price}.
       </p>
 
-      <TicketTable aria-label='ticket information'>
+      <TicketTable aria-label="ticket information">
         <TableHead>
           <TableRow>
             <TableCell>Row</TableCell>
@@ -82,7 +82,7 @@ const PurchaseModal = () => {
           purchaseTicketRequest();
 
           fetch('/api/book-seat', {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
             },
@@ -112,18 +112,18 @@ const PurchaseModal = () => {
         <h3>Enter payment details</h3>
         <Row>
           <TextField
-            variant='outlined'
-            label='Full name'
-            type='text'
+            variant="outlined"
+            label="Full name"
+            type="text"
             value={fullName}
             onChange={(ev) => setFullName(ev.currentTarget.value)}
             style={{ flex: 1 }}
           />
           <Spacer size={16} />
           <TextField
-            variant='outlined'
-            label='Email'
-            type='text'
+            variant="outlined"
+            label="Email"
+            type="text"
             value={email}
             onChange={(ev) => setEmail(ev.currentTarget.value)}
             style={{ flex: 1 }}
@@ -131,26 +131,26 @@ const PurchaseModal = () => {
         </Row>
         <Row>
           <TextField
-            variant='outlined'
-            label='Credit card'
-            type='text'
+            variant="outlined"
+            label="Credit card"
+            type="text"
             value={creditCard}
             onChange={(ev) => setCreditCard(ev.currentTarget.value)}
             style={{ flex: 2 }}
           />
           <Spacer size={16} />
           <TextField
-            variant='outlined'
-            label='Expiration'
-            type='text'
+            variant="outlined"
+            label="Expiration"
+            type="text"
             value={expiration}
             onChange={(ev) => setExpiration(ev.currentTarget.value)}
             style={{ flex: 1 }}
           />
           <Spacer size={16} />
-          <PurchaseButton variant='contained' color='primary' type='submit'>
+          <PurchaseButton variant="contained" color="primary" type="submit">
             {status === 'awaiting-response' ? (
-              <CircularProgress size={24} color='inherit' />
+              <CircularProgress size={24} color="inherit" />
             ) : (
               'Purchase'
             )}
