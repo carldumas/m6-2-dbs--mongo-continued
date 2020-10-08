@@ -90,7 +90,8 @@ const bookSeat = async (req, res) => {
     const query = { _id: seatId };
     // contains the values that we which to
     const newValues = {
-      $set: { isBooked: true },
+      // add customer data to the seat document directly
+      $set: { isBooked: true, customer: { fullName, email } },
     };
     const r = await db.collection('seats').updateOne(query, newValues);
 
@@ -100,14 +101,15 @@ const bookSeat = async (req, res) => {
     assert.strictEqual(1, r.modifiedCount);
 
     // on success, send
-    res.status(204).json({
-      status: 204,
+    // note: 204 for patch doesn't seems to work since I'm expecting a success back
+    res.status(201).json({
+      status: 201,
       success: true,
     });
   } catch (err) {
     console.log(err.stack);
     // on failure, send
-    res.status(500).json({ status: 500, message: err.message });
+    res.status(500).json({ status: 500, message: err });
   }
 
   // close the connection to the database server
